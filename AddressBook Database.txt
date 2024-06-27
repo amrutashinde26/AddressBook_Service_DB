@@ -108,3 +108,25 @@ mysql> SELECT city, state, COUNT(*) AS contact_count
 +--------+-------------+---------------+
 2 rows in set (0.04 sec)
 
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+UC-8 - retrieve entries sorted alphabetically by Person’s name for a given city
+
+mysql> SELECT first_name, last_name, address, city, state, zip, phone_no, emailid
+    -> FROM address_book_service
+    -> WHERE city = 'Mumbai'
+    -> ORDER BY first_name, last_name;
++------------+-----------+--------------------------------------+--------+-------------+--------+------------+-----------+
+| first_name | last_name | address                              | city   | state       | zip    | phone_no   | emailid   |
++------------+-----------+--------------------------------------+--------+-------------+--------+------------+-----------+
+| Amruta     | Shinde    | ROOM NO -50 D-WING - NIVAS APARTMENT | mumbai | maharashtra | 400017 | 5552211144 | amruta@26 |
+| Naveen     | Raj       | B-Wing - shau nagar room no-5        | mumbai | maharashtra | 400017 | 8779223275 | naveen@27 |
++------------+-----------+--------------------------------------+--------+-------------+--------+------------+-----------+
+2 rows in set (0.04 sec)
+
+mysql>
+
+
