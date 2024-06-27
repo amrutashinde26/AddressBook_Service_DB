@@ -94,17 +94,3 @@ mysql>
 
 
 --------------------------------------------------------------------------------------------------------------------------
-
-UC-7 - understand the size of address book by City and State
-
-mysql> SELECT city, state, COUNT(*) AS contact_count
-    -> FROM address_book_service
-    -> GROUP BY city, state;
-+--------+-------------+---------------+
-| city   | state       | contact_count |
-+--------+-------------+---------------+
-| mumbai | maharashtra |             2 |
-| nashik | maharashtra |             1 |
-+--------+-------------+---------------+
-2 rows in set (0.04 sec)
-
