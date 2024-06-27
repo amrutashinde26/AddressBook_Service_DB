@@ -55,3 +55,24 @@ Rows matched: 1  Changed: 1  Warnings: 0
 
 mysql>
 
+-----------------------------------------------------------------------------------------------------------------
+
+UC5 - Delete Existing Contacts From Address Book Service Table
+
+mysql> DELETE FROM  address_book_service WHERE first_name ='Neha' AND last_name = 'Patil';
+Query OK, 1 row affected (0.01 sec)
+
+mysql>
+
+mysql> SELECT * FROM address_book_service;
++------------+-----------+--------------------------------------+--------+-------------+--------+------------+-------------+
+| first_name | last_name | address                              | city   | state       | zip    | phone_no   | emailid     |
++------------+-----------+--------------------------------------+--------+-------------+--------+------------+-------------+
+| Amruta     | Shinde    | ROOM NO -50 D-WING - NIVAS APARTMENT | mumbai | maharashtra | 400017 | 5552211144 | amruta@26   |
+| Naveen     | Raj       | B-Wing - shau nagar room no-5        | mumbai | maharashtra | 400017 | 8779223275 | naveen@27   |
+| Shraddha   | Yadav     | rohan apartment A-Wing room no -02   | nashik | maharashtra | 56482  | 8795412598 | shraddha@32 |
++------------+-----------+--------------------------------------+--------+-------------+--------+------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql>
+
