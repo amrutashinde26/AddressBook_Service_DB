@@ -127,7 +127,7 @@ mysql> SELECT first_name, last_name, address, city, state, zip, phone_no, emaili
 mysql>
 
 ------------------------------------------------------------------------------------------------------------------------------
-
+ UC-9 - identify each Address Book with name and type
 mysql> CREATE TABLE address_book1
     -> (
     ->  id INT AUTO_INCREMENT PRIMARY KEY,
@@ -198,5 +198,24 @@ mysql> SELECT * FROM address_book_service;
 |  3 | Shraddha   | Yadav     | rohan apartment A-Wing room no -02   | nashik | maharashtra | 56482  | 8795412598 | shraddha@32 | Family     |
 +----+------------+-----------+--------------------------------------+--------+-------------+--------+------------+-------------+------------+
 3 rows in set (0.00 sec)
+
+mysql>
+
+---------------------------------------------------------------------------------------------------------------------
+UC-10 - get number of contact persons i.e. count by type
+
+
+mysql> SELECT type, COUNT(*) AS contact_count
+    -> FROM address_book_service
+    -> GROUP BY type
+    -> ORDER BY contact_count DESC;
++------------+---------------+
+| type       | contact_count |
++------------+---------------+
+| Profession |             1 |
+| Friends    |             1 |
+| Family     |             1 |
++------------+---------------+
+3 rows in set (0.04 sec)
 
 mysql>
