@@ -125,3 +125,78 @@ mysql> SELECT first_name, last_name, address, city, state, zip, phone_no, emaili
 2 rows in set (0.04 sec)
 
 mysql>
+
+------------------------------------------------------------------------------------------------------------------------------
+
+mysql> CREATE TABLE address_book1
+    -> (
+    ->  id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(255) NOT NULL,
+    ->     type VARCHAR(255) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> INSERT INTO address_book1 (name, type) VALUES
+    -> ('Family Contacts','Family'),
+    -> ('Work Contacts','Profession'),
+    -> ('High School Friends','Friends');
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+
+mysql> SELECT * FROM address_book1;
++----+---------------------+------------+
+| id | name                | type       |
++----+---------------------+------------+
+|  1 | Family Contacts     | Family     |
+|  2 | Work Contacts       | Profession |
+|  3 | High School Friends | Friends    |
++----+---------------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> ALTER TABLE address_book_service
+    ->      ADD COLUMN type VARCHAR(255),
+    -> ADD FOREIGN KEY(ID) REFERENCES address_book1(id);
+Query OK, 3 rows affected (0.17 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+
+mysql> SELECT * FROM address_book_service;
++----+------------+-----------+--------------------------------------+--------+-------------+--------+------------+-------------+------+
+| id | first_name | last_name | address                              | city   | state       | zip    | phone_no   | emailid     | type |
++----+------------+-----------+--------------------------------------+--------+-------------+--------+------------+-------------+------+
+|  1 | Amruta     | Shinde    | ROOM NO -50 D-WING - NIVAS APARTMENT | mumbai | maharashtra | 400017 | 5552211144 | amruta@26   | NULL |
+|  2 | Naveen     | Raj       | B-Wing - shau nagar room no-5        | mumbai | maharashtra | 400017 | 8779223275 | naveen@27   | NULL |
+|  3 | Shraddha   | Yadav     | rohan apartment A-Wing room no -02   | nashik | maharashtra | 56482  | 8795412598 | shraddha@32 | NULL |
++----+------------+-----------+--------------------------------------+--------+-------------+--------+------------+-------------+------+
+3 rows in set (0.00 sec)
+
+mysql> UPDATE address_book_service
+    -> SET type = 'Profession'
+    -> WHERE first_name = 'Amruta';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE address_book_service
+    -> SET type = 'Friends'
+    -> WHERE first_name = 'Naveen';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE address_book_service
+    -> SET type = 'Family'
+    -> WHERE first_name = 'Shraddha';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM address_book_service;
++----+------------+-----------+--------------------------------------+--------+-------------+--------+------------+-------------+------------+
+| id | first_name | last_name | address                              | city   | state       | zip    | phone_no   | emailid     | type       |
++----+------------+-----------+--------------------------------------+--------+-------------+--------+------------+-------------+------------+
+|  1 | Amruta     | Shinde    | ROOM NO -50 D-WING - NIVAS APARTMENT | mumbai | maharashtra | 400017 | 5552211144 | amruta@26   | Profession |
+|  2 | Naveen     | Raj       | B-Wing - shau nagar room no-5        | mumbai | maharashtra | 400017 | 8779223275 | naveen@27   | Friends    |
+|  3 | Shraddha   | Yadav     | rohan apartment A-Wing room no -02   | nashik | maharashtra | 56482  | 8795412598 | shraddha@32 | Family     |
++----+------------+-----------+--------------------------------------+--------+-------------+--------+------------+-------------+------------+
+3 rows in set (0.00 sec)
+
+mysql>
